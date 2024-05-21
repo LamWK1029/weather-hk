@@ -1,0 +1,47 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageContent {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  width: 100vw;
+  bottom: 0;
+  position: absolute;
+  background-color: #333;
+  color: white;
+}
+
+nav ul {
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul li {
+  height: 100%;
+  margin: 0.5rem;
+}
+
+nav ul li a {
+  margin: 8px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
