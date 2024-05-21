@@ -1,18 +1,14 @@
 .layout {
+  margin: 0;
+  padding: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: whitesmoke;
 }
 
 .pageContent {
-  position: relative;
-  width: 80%;
-  height: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 nav {
