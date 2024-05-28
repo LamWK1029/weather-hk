@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import PauseIcon from "@mui/icons-material/Pause";
 import "./HomePage.css";
 import "../../styles/global.css";
 import "../../styles/animations.css";
@@ -46,6 +48,20 @@ const HomePage = () => {
       }
     }
     fetchWeather();
+
+    // detect scroll-list scroll event and show the scroll-icon
+    const scrollList = document.querySelector(".announcement");
+    scrollList.addEventListener("scroll", () => {
+      // stop intervalList to show the next announcement
+      intervalList.forEach((interval) => clearInterval(interval));
+
+      const playIcon = document.querySelector(".play-icon");
+      playIcon.classList.add("fade-in-out");
+
+      const scrollIcon = document.querySelector(".scroll-icon");
+      scrollIcon.classList.remove("slide-in-out");
+      scrollIcon.classList.add("fade-out");
+    });
 
     // fetch weather 9-day forecast
     async function fetchWeatherFor9Days() {
@@ -105,9 +121,15 @@ const HomePage = () => {
                 <h3>Outlook:</h3>
                 <h4>{weatherData.flw.outlook}</h4>
               </div>
+              <div className="play-icon">
+                <PauseIcon />
+              </div>
+              <div className="scroll-icon slide-in-out">
+                <KeyboardArrowDownIcon />
+              </div>
             </div>
 
-            {weatherData.fnd.weatherForecast.map((forecast) => (
+            {/* {weatherData.fnd.weatherForecast.map((forecast) => (
               <div key={forecast.forecastDate} className="weather-forecast">
                 <h3>{forecast.week}</h3>
                 <h4>{forecast.forecastWeather}</h4>
@@ -116,7 +138,7 @@ const HomePage = () => {
                   {forecast.forecastMintemp.value}°
                 </h4>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

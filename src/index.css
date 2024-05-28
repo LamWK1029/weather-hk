@@ -8,6 +8,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --main-text-color: rgba(255, 255, 255, 0.75);
 
   overflow: hidden;
 }
@@ -32,7 +33,7 @@ body {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: var(--main-text-color);
     background-color: #ffffff;
   }
   a:hover {
