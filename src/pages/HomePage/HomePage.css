@@ -3,7 +3,6 @@
   top: 0;
   width: 100%;
   height: 100vh;
-  /* color: rgba(255, 255, 255, 0.67); */
   opacity: 0;
 }
 
@@ -62,7 +61,7 @@ h4 {
   width: 100%;
   height: 60%;
   max-height: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
   transform: translate3d(-64px, 0, 0);
   display: flex;
   flex-direction: column;
@@ -72,7 +71,7 @@ h4 {
 .dashboard {
   position: relative;
   width: 80%;
-  height: 100%;
+  height: 88%;
   margin: 4% 0%;
   padding: 4%;
   border-radius: 16px;
@@ -85,14 +84,11 @@ h4 {
 .announcement {
   position: relative;
   width: 90%;
-  height: 24%;
+  height: 88%;
   background-color: rgba(0, 0, 0, 0.1);
   margin: 4% 0;
   padding: 4% 0;
   border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
   overflow: auto;
 }
 
@@ -100,40 +96,27 @@ h4 {
   display: none;
 }
 
+.msg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .announcement .general-situation,
 .announcement .forecast-desc,
 .announcement .outlook {
-  position: absolute;
   width: 88%;
-
-  transition-property: opacity;
-  transition-duration: 3s;
-  transition-timing-function: linear;
-  opacity: 0;
+  margin: 4% 0;
 }
 
 .announcement h4 {
   margin: 3px;
 }
 
-.play-icon {
-  width: 100%;
-  right: 8px;
-  position: absolute;
-  display: flex;
-  justify-content: end;
-  opacity: 0;
-}
-
-.scroll-icon {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  transform: translate3d(0, -8px, 0);
-  display: flex;
-  justify-content: end;
-}
-
-.show {
-  opacity: 1;
+.days-forecast {
+  margin: 4% 0%;
+  padding: 4%;
+  background-color: rgba(0, 0, 0, 0.1);
 }

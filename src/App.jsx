@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import HomePage from "./pages/HomePage";
-import AreasPage from "./pages/AreasPage";
+import ForecastPage from "./pages/Forecast";
 import { WeatherProvider } from "./context/weatherContext";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/areas" element={<AreasPage />} />
+            <Route path="/forecast" element={<ForecastPage />} />
           </Routes>
         </Layout>
       </Router>

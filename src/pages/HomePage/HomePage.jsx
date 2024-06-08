@@ -1,11 +1,10 @@
 import React, { useEffect, useContext } from "react";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import PauseIcon from "@mui/icons-material/Pause";
+import SwipeUpIcon from "@mui/icons-material/SwipeUp";
 import "./HomePage.css";
 import "../../styles/global.css";
 import "../../styles/animations.css";
 import { day, month, year, weekDayEn } from "../../utils/date";
-import { fetchWeatherFLW, fetchWeatherFND } from "../../service/weatherService";
+import { fetchWeatherFLW } from "../../service/weatherService";
 import {
   WeatherContext,
   WeatherDispatchContext,
@@ -30,49 +29,13 @@ const HomePage = () => {
       try {
         const weatherFlw = await fetchWeatherFLW();
         weatherDispatch({ type: "SET_WEATHER_FLW", payload: weatherFlw });
-        // craete flash announcement by adding class show to the announcement child div
-        const announcement = document.querySelector(".announcement");
-        announcement.children[0].classList.add("fade-in-3s");
-
-        // set interval to show the next announcement
-        let index = 0;
-        const announcementChildren = announcement.children;
-        const announcementInterval = setInterval(() => {
-          announcementChildren[index].classList.remove("fade-in-3s");
-          index = (index + 1) % announcementChildren.length;
-          announcementChildren[index].classList.add("fade-in-3s");
-        }, 3000);
-        intervalList.push(announcementInterval);
+        const announcementMsg = document.querySelector(".announcement .msg");
+        announcementMsg.classList.add("scroll-up");
       } catch (error) {
         console.error("Failed to fetch weather data", error);
       }
     }
     fetchWeather();
-
-    // detect scroll-list scroll event and show the scroll-icon
-    const scrollList = document.querySelector(".announcement");
-    scrollList.addEventListener("scroll", () => {
-      // stop intervalList to show the next announcement
-      intervalList.forEach((interval) => clearInterval(interval));
-
-      const playIcon = document.querySelector(".play-icon");
-      playIcon.classList.add("fade-in-out");
-
-      const scrollIcon = document.querySelector(".scroll-icon");
-      scrollIcon.classList.remove("slide-in-out");
-      scrollIcon.classList.add("fade-out");
-    });
-
-    // fetch weather 9-day forecast
-    async function fetchWeatherFor9Days() {
-      try {
-        const weatherFnd = await fetchWeatherFND();
-        weatherDispatch({ type: "SET_WEATHER_FND", payload: weatherFnd });
-      } catch (error) {
-        console.error("Failed to fetch weather data", error);
-      }
-    }
-    fetchWeatherFor9Days();
 
     return () => {
       intervalList.forEach((interval) => clearInterval(interval));
@@ -109,36 +72,21 @@ const HomePage = () => {
             </h2>
 
             <div className="announcement">
-              <div className="general-situation">
-                <h3>General:</h3>
-                <h4>{weatherData.flw.generalSituation}</h4>
-              </div>
-              <div className="forecast-desc">
-                <h3>Forecast:</h3>
-                <h4>{weatherData.flw.forecastDesc}</h4>
-              </div>
-              <div className="outlook">
-                <h3>Outlook:</h3>
-                <h4>{weatherData.flw.outlook}</h4>
-              </div>
-              <div className="play-icon">
-                <PauseIcon />
-              </div>
-              <div className="scroll-icon slide-in-out">
-                <KeyboardArrowDownIcon />
+              <div className="msg">
+                <div className="general-situation">
+                  <h3>General:</h3>
+                  <h4>{weatherData.flw.generalSituation}</h4>
+                </div>
+                <div className="forecast-desc">
+                  <h3>Forecast:</h3>
+                  <h4>{weatherData.flw.forecastDesc}</h4>
+                </div>
+                <div className="outlook">
+                  <h3>Outlook:</h3>
+                  <h4>{weatherData.flw.outlook}</h4>
+                </div>
               </div>
             </div>
-
-            {/* {weatherData.fnd.weatherForecast.map((forecast) => (
-              <div key={forecast.forecastDate} className="weather-forecast">
-                <h3>{forecast.week}</h3>
-                <h4>{forecast.forecastWeather}</h4>
-                <h4>
-                  H: {forecast.forecastMaxtemp.value}° L:{" "}
-                  {forecast.forecastMintemp.value}°
-                </h4>
-              </div>
-            ))} */}
           </div>
         </div>
       </div>

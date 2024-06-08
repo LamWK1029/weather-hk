@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/areas">
+            <NavLink to="/forecast">
               <ListIcon />
             </NavLink>
           </li>
