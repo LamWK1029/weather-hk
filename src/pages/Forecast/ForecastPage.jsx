@@ -18,6 +18,7 @@ const ForecastPage = () => {
     async function fetchWeatherFor9Days() {
       try {
         const weatherFnd = await fetchWeatherFND();
+        debugger;
         weatherDispatch({ type: "SET_WEATHER_FND", payload: weatherFnd });
       } catch (error) {
         console.error("Failed to fetch weather data", error);
@@ -43,7 +44,7 @@ const ForecastPage = () => {
         />
       </video>
 
-      <div className="content">
+      <div className="forecast-content">
         <h1>9-Days Forecast</h1>
       </div>
     </div>

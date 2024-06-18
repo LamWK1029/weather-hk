@@ -55,7 +55,7 @@ const HomePage = () => {
         />
       </video>
 
-      <div className="content">
+      <div className="home-content">
         <div className="slide-in info">
           <h2>My Location</h2>
           <h4>Tesung Kwan O</h4>
